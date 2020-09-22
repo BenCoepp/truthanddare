@@ -10,5 +10,6 @@
     </qresource>
     <qresource prefix="/Components">
         <file>Flicker.qml</file>
+        <file>Button_Custom.qml</file>
     </qresource>
 </RCC>
