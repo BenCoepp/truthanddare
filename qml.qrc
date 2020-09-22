@@ -8,4 +8,7 @@
     <qresource prefix="/Load_Page">
         <file>Load_Page.qml</file>
     </qresource>
+    <qresource prefix="/Components">
+        <file>Flicker.qml</file>
+    </qresource>
 </RCC>
