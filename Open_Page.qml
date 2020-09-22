@@ -6,11 +6,16 @@ Item {
     width: parent.width
     height: parent.height
 
+    Rectangle{
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: parent.width-100
+        color: "blue"
+    }
+
     Item {
         width: parent.width
         height: parent.height
-        property var bgColor: "blue"
-
 
         ListView {
             anchors.fill: parent
@@ -34,21 +39,17 @@ Item {
                     radius: 20
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: -20
-                    color: bgColor
+                    color: "blue"
 
                     Button_Custom{
                         id: button
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: 100
                         bgColor: "blue"
                     }
                 }
             }
         }
-        Rectangle{
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: parent.width-100
-            color: bgColor
-        }
     }
-
 }
