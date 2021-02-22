@@ -7,12 +7,18 @@ ApplicationWindow {
     height: 640
     title: "Truth and Dare"
 
+    property var firstOpen: false
+
     StackView{
         id: contentFrame
         anchors.fill: parent
-        initialItem: Qt.resolvedUrl("qrc:/Load_Page/Load_Page.qml")
+        initialItem: Qt.resolvedUrl("qrc:/main/Load_Page.qml")
     }
     Component.onCompleted: {
-        contentFrame.replace("qrc:/Open_Page/Open_Page.qml")
+        if(firstOpen !== true){
+            contentFrame.replace("qrc:/main/FirstOpen_Page.qml")
+        }else{
+            contentFrame.replace("qrc:/Game/Open_Page.qml")
+        }
     }
 }

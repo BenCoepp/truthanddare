@@ -1,5 +1,5 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.5
+import QtQuick 2.15
+import QtQuick.Controls 2.12
 
 
 Button {
@@ -7,23 +7,39 @@ Button {
     height: 60
 
     property var bgColor: ""
+    property var btColor: ""
+    property var btText: ""
+    property var btIcon: ""
 
     background: Rectangle{
         anchors.fill: parent
         color: bgColor
+
+        Label{
+            anchors.centerIn: parent
+            text: btText
+        }
+    }
+    onClicked: {
+        this.height = parent.height
+        this.width = parent.width
     }
 
+    Behavior on width {PropertyAnimation { properties: "width"; easing.type: Easing.InOutQuad }}
+    Behavior on height {PropertyAnimation { properties: "height"; easing.type: Easing.InOutQuad }}
+
     Rectangle{
+        id: rec
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         width: parent.height
         height: parent.height
-        color: "red"
+        color: btColor
 
         Image {
             anchors.fill: parent
             antialiasing: true
-            source: "file"
+            source: btIcon
         }
     }
 

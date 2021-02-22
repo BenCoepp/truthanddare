@@ -1,15 +1,15 @@
 <RCC>
     <qresource prefix="/main">
         <file>main.qml</file>
-    </qresource>
-    <qresource prefix="/Open_Page">
-        <file>Open_Page.qml</file>
-    </qresource>
-    <qresource prefix="/Load_Page">
         <file>Load_Page.qml</file>
+        <file>FirstOpen_Page.qml</file>
+    </qresource>
+    <qresource prefix="/Game">
+        <file>Open_Page.qml</file>
+        <file>Game_Page.qml</file>
+        <file>NewGame_PopUp.qml</file>
     </qresource>
     <qresource prefix="/Components">
-        <file>Flicker.qml</file>
         <file>Button_Custom.qml</file>
     </qresource>
 </RCC>
