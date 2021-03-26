@@ -20,10 +20,6 @@ Button {
             text: btText
         }
     }
-    onClicked: {
-        this.height = parent.height
-        this.width = parent.width
-    }
 
     Behavior on width {PropertyAnimation { properties: "width"; easing.type: Easing.InOutQuad }}
     Behavior on height {PropertyAnimation { properties: "height"; easing.type: Easing.InOutQuad }}

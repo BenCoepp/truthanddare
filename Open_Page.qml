@@ -7,7 +7,6 @@ Rectangle{
     anchors.fill: parent
     color: "#2C3E50"
 
-
     ColumnLayout {
         anchors.top: parent.top
         anchors.topMargin: 100
@@ -39,5 +38,6 @@ Rectangle{
 
     NewGame_PopUp{
         id: newGamePopUp
+        visible: false
     }
 }
