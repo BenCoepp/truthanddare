@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.5
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.12
 
 Rectangle{
@@ -42,6 +42,5 @@ Rectangle{
         onClicked: {
             contentFrame.replace("qrc:/Game/Open_Page.qml")
         }
-
     }
 }
