@@ -3,7 +3,6 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.12
 
 Rectangle{
-    anchors.fill: parent
     color: "#2C3E50"
 
     Label{
