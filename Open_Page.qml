@@ -21,4 +21,21 @@ Rectangle{
             contentFrame.replace("qrc:/Game/NewGame_Page.qml")
         }
     }
+
+    MouseArea{
+        width: parent.width
+        height: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 250
+
+        Label{
+            anchors.centerIn: parent
+            text: "Add TAD"
+        }
+
+        onClicked: {
+            contentFrame.replace("qrc:/Add_TAD/AddTAD_Page.qml")
+        }
+    }
 }

@@ -13,6 +13,29 @@ Item {
                 anchors.topMargin: 50
                 text: "new player"
             }
+            ListView{
+                anchors.fill: parent
+                model: ListModel{
+                    id: newPlayerListModel
+                }
+                footerPositioning: ListView.OverlayFooter
+                footer: Item {
+                    width: parent.width
+                    height: 100
+
+                    RoundButton{
+                        anchors.right: parent.right
+                        anchors.rightMargin: 10
+                        anchors.top: parent.top
+                        anchors.topMargin: 10
+                        text: "+"
+                        onClicked: {
+                            newPlayer_drawer.open()
+                        }
+                    }
+                }
+            }
+
             MouseArea{
                 anchors.bottom: parent.bottom
                 width: parent.width
@@ -74,6 +97,9 @@ Item {
                 }
             }
         }
+    }
+    NewPlayer_Drawer{
+        id: newPlayer_drawer
     }
 }
 

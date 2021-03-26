@@ -8,8 +8,12 @@
         <file>Open_Page.qml</file>
         <file>Game_Page.qml</file>
         <file>NewGame_Page.qml</file>
+        <file>NewPlayer_Drawer.qml</file>
     </qresource>
     <qresource prefix="/Components">
         <file>Button_Custom.qml</file>
+    </qresource>
+    <qresource prefix="/Add_TAD">
+        <file>AddTAD_Page.qml</file>
     </qresource>
 </RCC>
