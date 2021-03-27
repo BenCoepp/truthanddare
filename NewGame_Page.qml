@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
+
+    property var currentMode: 0
     SwipeView{
         id: newGameSwipeView
         anchors.fill: parent
@@ -55,12 +57,49 @@ Item {
             }
         }
         Rectangle{
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 50
-                text: "game mode"
+            ListView{
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.width
+                model: ListModel{
+                    id: modeListModel
+                    ListElement{
+                        value: "1"
+                        titel: "Easy"
+                    }
+                    ListElement{
+                        value: "2"
+                        titel: "Normal"
+                    }
+                    ListElement{
+                        value: "3"
+                        titel: "Couple"
+                    }
+                    ListElement{
+                        value: "4"
+                        titel: "Hardcore"
+                    }
+                    ListElement{
+                        value: "5"
+                        titel: "Devil"
+                    }
+                }
+                delegate: MouseArea{
+                    width: parent.width
+                    height: parent.height/modeListModel.count-1
+
+                    Label{
+                        anchors.right: parent.right
+                        anchors.rightMargin: 10
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: value
+                    }
+                    onClicked: {
+                        console.log(value)
+                    }
+                }
             }
+
             MouseArea{
                 anchors.bottom: parent.bottom
                 width: parent.width/2
