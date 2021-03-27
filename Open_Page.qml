@@ -31,7 +31,7 @@ Rectangle{
 
         Label{
             anchors.centerIn: parent
-            text: "Add TAD"
+            text: "New Truth & Dare"
         }
 
         onClicked: {

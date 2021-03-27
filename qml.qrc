@@ -16,4 +16,7 @@
     <qresource prefix="/Add_TAD">
         <file>AddTAD_Page.qml</file>
     </qresource>
+    <qresource prefix="/Database">
+        <file>LocalStorage_Settings.js</file>
+    </qresource>
 </RCC>

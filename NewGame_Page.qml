@@ -86,13 +86,13 @@ Item {
                 }
                 delegate: MouseArea{
                     width: parent.width
-                    height: parent.height/modeListModel.count-1
+                    height: 50
 
                     Label{
                         anchors.right: parent.right
                         anchors.rightMargin: 10
                         anchors.verticalCenter: parent.verticalCenter
-                        text: value
+                        text: titel
                     }
                     onClicked: {
                         console.log(value)
