@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import "qrc:/Components"
 
 Item {
 
@@ -30,15 +31,16 @@ Item {
                 footerPositioning: ListView.OverlayFooter
                 footer: Item {
                     width: parent.width
-                    height: 100
+                    height: 50
 
-                    RoundButton{
+                    ListView_Control_Button{
                         anchors.right: parent.right
                         anchors.rightMargin: 10
-                        anchors.top: parent.top
-                        anchors.topMargin: 10
-                        text: "+"
-                        onClicked: {
+                        anchors.verticalCenter: parent.verticalCenter
+                        button1Icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+                        button2Icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+                        button3Icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+                        onButton1Clicked: {
                             newPlayer_drawer.open()
                         }
                     }

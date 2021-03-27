@@ -12,11 +12,17 @@
     </qresource>
     <qresource prefix="/Components">
         <file>Button_Custom.qml</file>
+        <file>ListView_Control_Button.qml</file>
     </qresource>
     <qresource prefix="/Add_TAD">
         <file>AddTAD_Page.qml</file>
+        <file>YourTruthAndDares_Page.qml</file>
     </qresource>
     <qresource prefix="/Database">
         <file>LocalStorage_Settings.js</file>
+    </qresource>
+    <qresource prefix="/Assets"/>
+    <qresource prefix="/Assetes">
+        <file>Icons/Expand Arrow icon.png</file>
     </qresource>
 </RCC>
