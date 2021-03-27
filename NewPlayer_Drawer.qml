@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Window 2.12
 
 Drawer {
     id: drawerRoot
@@ -7,6 +8,8 @@ Drawer {
     height: parent.height/2
     edge: Qt.BottomEdge
     interactive: false
+
+    property var moreInfoA: false
 
 
     TextField{
@@ -21,7 +24,7 @@ Drawer {
         anchors.topMargin: 100
         anchors.left: parent.left
         anchors.leftMargin: 10
-        placeholderText: qsTr("Player Name...")
+        placeholderText: qsTr("Gender")
     }
     MouseArea{
         anchors.bottom: parent.bottom
@@ -31,11 +34,20 @@ Drawer {
         height: 20
 
         Label{
+            id: moreLabel
             anchors.centerIn: parent
             text: "More Info"
         }
         onClicked: {
-            drawerRoot.height = 720
+            if(moreInfoA === false){
+                drawerRoot.height = drawerRoot.height*2
+                moreLabel.text = "Less Info"
+                moreInfoA = true
+            }else{
+                drawerRoot.height = drawerRoot.height/2
+                moreLabel.text = "More Info"
+                moreInfoA = false
+            }
         }
     }
 }

@@ -17,6 +17,13 @@ Item {
                 anchors.fill: parent
                 model: ListModel{
                     id: newPlayerListModel
+                    onCountChanged: {
+                        if(this.count >= 2){
+                            continueButton1.enabled = true
+                        }else{
+                            continueButton1.enabled = false
+                        }
+                    }
                 }
                 footerPositioning: ListView.OverlayFooter
                 footer: Item {
@@ -37,9 +44,11 @@ Item {
             }
 
             MouseArea{
+                id: continueButton1
                 anchors.bottom: parent.bottom
                 width: parent.width
                 height: 50
+                enabled: false
                 onClicked: {
                     newGameSwipeView.setCurrentIndex(1)
                 }
