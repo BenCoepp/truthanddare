@@ -9,7 +9,7 @@ ApplicationWindow {
     height: 640
     title: "Truth and Dare"
 
-    property var firstOpen: LocalStorage_Settings.dbGet("firstOpen")
+    property var firstOpen: LocalStorage_Settings.dbGet("firstOpen") || "false"
 
     StackView{
         id: contentFrame

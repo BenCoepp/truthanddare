@@ -31,12 +31,13 @@ Item {
                 footerPositioning: ListView.OverlayFooter
                 footer: Item {
                     width: parent.width
-                    height: 50
+                    height: 100
 
                     ListView_Control_Button{
                         anchors.right: parent.right
                         anchors.rightMargin: 10
-                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: 10
                         button1Icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
                         button2Icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
                         button3Icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
