@@ -3,21 +3,30 @@ import QtQuick.Controls 2.15
 import "qrc:/Components"
 
 Item {
-
     property var currentMode: 0
     SwipeView{
         id: newGameSwipeView
         anchors.fill: parent
-
+        interactive: false
         Rectangle{
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 50
-                text: "new player"
+            NavBar_Custom{
+                navText: "Add Players"
+                onBackButtonClicked: {
+                    contentFrame.replace("qrc:/Game/Open_Page.qml")
+                }
             }
+            Label{
+                anchors.centerIn: parent
+                text: newPlayerListModel.count
+                font.bold: true
+                font.pointSize: 522
+                color: "lightblue"
+            }
+
             ListView{
-                anchors.fill: parent
+                width: parent.width
+                height: parent.height-50
+                anchors.bottom: parent.bottom
                 model: ListModel{
                     id: newPlayerListModel
                     onCountChanged: {
@@ -46,6 +55,41 @@ Item {
                         }
                     }
                 }
+                delegate: Item {
+                    width: parent.width
+                    height: 70
+
+                    Rectangle{
+                        anchors.centerIn: parent
+                        width: parent.width-20
+                        height: 50
+                        radius: 5
+
+                        Image {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 10
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: 30
+                            height: 30
+                            source: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+                        }
+                        Item {
+                            anchors.centerIn: parent
+                            width: parent.width/2
+                            height: 50
+                            Label{
+                                anchors.left: parent.left
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: playerName
+                            }
+                            Label{
+                                anchors.right: parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: playerAge
+                            }
+                        }
+                    }
+                }
             }
 
             MouseArea{
@@ -60,6 +104,12 @@ Item {
             }
         }
         Rectangle{
+            NavBar_Custom{
+                navText: "Choose Mode"
+                onBackButtonClicked: {
+                    contentFrame.replace("qrc:/Game/Open_Page.qml")
+                }
+            }
             ListView{
                 anchors.centerIn: parent
                 width: parent.width
@@ -123,6 +173,12 @@ Item {
             }
         }
         Rectangle{
+            NavBar_Custom{
+                navText: "What do you want?"
+                onBackButtonClicked: {
+                    contentFrame.replace("qrc:/Game/Open_Page.qml")
+                }
+            }
             Label{
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top

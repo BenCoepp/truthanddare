@@ -1,10 +1,16 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import "qrc:/Components"
 
 Rectangle {
 
     property date today: new Date()
-
+    NavBar_Custom{
+        navText: "Add New"
+        onBackButtonClicked: {
+            contentFrame.replace("qrc:/Game/Open_Page.qml")
+        }
+    }
     Rectangle{
         id: backRectangel
         height: 50
@@ -27,42 +33,19 @@ Rectangle {
         }
     }
 
-    MouseArea{
+    AddNew_Button{
         id: publicTruthAndDareMouseArea
         anchors.top: parent.top
         anchors.topMargin: 50
-        width: parent.width
-        height: parent.height/2-50
-
-        Rectangle{
-            anchors.fill: parent
-            color: "#2c3e50"
-        }
-        Label{
-            anchors.centerIn: parent
-            text: "Public Truthes & Dares"
-        }
         onClicked: {
             this.height = parent.height-50
             this.enabled = false
             yourTruthAndDareMouseArea.visible = false
         }
     }
-    MouseArea{
+    AddNew_Button{
         id: yourTruthAndDareMouseArea
         anchors.bottom: parent.bottom
-        width: parent.width
-        height: parent.height/2
-
-        Rectangle{
-            anchors.fill: parent
-            color: "#fe9000"
-        }
-        Label{
-            id: yourTruthAndDareTitel
-            anchors.centerIn: parent
-            text: "Your Truthes & Dares"
-        }
         onClicked: {
             backRectangel.color = "#fe9000"
             this.height = parent.height-50

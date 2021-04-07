@@ -13,10 +13,13 @@
     <qresource prefix="/Components">
         <file>Button_Custom.qml</file>
         <file>ListView_Control_Button.qml</file>
+        <file>TextInput_Custom.qml</file>
+        <file>NavBar_Custom.qml</file>
     </qresource>
     <qresource prefix="/Add_TAD">
         <file>AddTAD_Page.qml</file>
         <file>YourTruthAndDares_Page.qml</file>
+        <file>AddNew_Button.qml</file>
     </qresource>
     <qresource prefix="/Database">
         <file>LocalStorage_Settings.js</file>

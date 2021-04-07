@@ -2,47 +2,64 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 
-Button {
+MouseArea{
+    id: root
     width: parent.width
-    height: 60
+    height: 140
 
-    property var bgColor: ""
-    property var btColor: ""
-    property var btText: ""
-    property var btIcon: ""
-
-    background: Rectangle{
-        anchors.fill: parent
-        color: bgColor
-
-        Label{
-            anchors.centerIn: parent
-            text: btText
-        }
-    }
-
-    Behavior on width {PropertyAnimation { properties: "width"; easing.type: Easing.InOutQuad }}
-    Behavior on height {PropertyAnimation { properties: "height"; easing.type: Easing.InOutQuad }}
+    property var buttonTitel: "Button Titel"
+    property var titelColor: "white"
+    property var buttonSubTitel: "Button SubTitel"
+    property var subTitelColor: "white"
+    property var buttonColor: "grey"
 
     Rectangle{
-        id: rec
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-        width: parent.height
+        anchors.centerIn: parent
         height: parent.height
-        color: btColor
-
-        Image {
-            anchors.fill: parent
-            antialiasing: true
-            source: btIcon
-        }
+        width: parent.width-20
+        color: buttonColor
+        radius: 5
     }
 
+    Label{
+        id: titelLabel
+        text: buttonTitel
+        font.bold: true
+        font.pointSize: 35
+        width: parent.width
+        height: 50
+        color: titelColor
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+    }
+    Label{
+        anchors.top: parent.top
+        anchors.topMargin: titelLabel.height+15
+        text: buttonSubTitel
+        font.pointSize: 10
+        color: subTitelColor
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+    }
+    Rectangle{
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width-20
+        height: 50
+        radius: 5
+
+        Image {
+            anchors.centerIn: parent
+            width: parent.height-20
+            height: parent.height-20
+            rotation: -90
+            source: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+        }
+    }
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.25}
+    D{i:0;formeditorZoom:1.33}
 }
 ##^##*/
