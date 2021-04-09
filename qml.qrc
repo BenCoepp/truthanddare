@@ -30,4 +30,8 @@
         <file>Icons/delete_icon.png</file>
         <file>Icons/plus_icon.png</file>
     </qresource>
+    <qresource prefix="/Settings_Page">
+        <file>Settings_Page.qml</file>
+        <file>Settings_Item.qml</file>
+    </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Window 2.12
 import "qrc:/Components"
 Item {
     property var currentMode: 0
@@ -180,6 +181,7 @@ Item {
             }
         }
         Rectangle{
+            color: "#282442"
             NavBar_Custom{
                 navText: "Choose Mode"
                 onBackButtonClicked: {
@@ -193,6 +195,8 @@ Item {
                 height: parent.width
                 orientation: ListView.Horizontal
                 snapMode: ListView.SnapToItem
+                highlight: Rectangle {color: 'grey'}
+                focus: true
                 model: ListModel{
                     id: modeListModel
                     ListElement{
@@ -232,8 +236,8 @@ Item {
                     }
                 }
                 delegate: MouseArea{
-                    width: 360
-                    height: 360
+                    width: Screen.width
+                    height: Screen.width
 
                     Rectangle{
                         anchors.centerIn: parent
@@ -291,6 +295,7 @@ Item {
                             anchors.bottom: parent.bottom
                             width: parent.width
                             height: parent.height/2
+                            radius: 5
 
                             Label{
                                 anchors.top: parent.top
@@ -328,6 +333,10 @@ Item {
                 onClicked: {
                     newGameSwipeView.setCurrentIndex(0)
                 }
+                Rectangle{
+                    anchors.fill: parent
+                    color: "green"
+                }
             }
             MouseArea{
                 anchors.bottom: parent.bottom
@@ -336,6 +345,10 @@ Item {
                 height: 50
                 onClicked: {
                     newGameSwipeView.setCurrentIndex(2)
+                }
+                Rectangle{
+                    anchors.fill: parent
+                    color: "red"
                 }
             }
         }

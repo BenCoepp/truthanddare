@@ -28,7 +28,7 @@ Rectangle{
             buttonSubTitel: "Customize the App, and manage your Settings"
             Layout.alignment: Qt.AlignHCenter
             onClicked: {
-                contentFrame.replace("qrc:/Add_TAD/AddTAD_Page.qml")
+                contentFrame.replace("qrc:/Settings_Page/Settings_Page.qml")
             }
         }
         Button_Custom{
