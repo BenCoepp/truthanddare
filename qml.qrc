@@ -27,5 +27,7 @@
     <qresource prefix="/Assets"/>
     <qresource prefix="/Assetes">
         <file>Icons/Expand Arrow icon.png</file>
+        <file>Icons/delete_icon.png</file>
+        <file>Icons/plus_icon.png</file>
     </qresource>
 </RCC>

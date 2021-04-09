@@ -4,11 +4,9 @@ import QtQuick.Layouts 1.12
 import "qrc:/Components"
 
 Rectangle{
-    color: "#2C3E50"
-
-    ColumnLayout{
-        anchors.fill: parent
-
+    color: "#282442"
+    ObjectModel{
+        id: openPageModel
         Button_Custom{
             buttonTitel: "New Games"
             buttonSubTitel: "Standard Truth & Dare Game"
@@ -41,5 +39,12 @@ Rectangle{
                 contentFrame.replace("qrc:/Add_TAD/AddTAD_Page.qml")
             }
         }
+    }
+    ListView {
+        anchors.centerIn: parent
+        width: parent.width
+        height: parent.height-20
+        model: openPageModel
+        spacing: 20
     }
 }

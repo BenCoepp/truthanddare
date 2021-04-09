@@ -7,6 +7,7 @@ Item {
     width: parent.width
 
     property var navText: ""
+    property var titelColor: "white"
     property var icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
 
     signal backButtonClicked()
@@ -31,7 +32,7 @@ Item {
         text: navText
         font.bold: true
         font.pointSize: 10
-        color: "blue"
+        color: titelColor
     }
 }
 

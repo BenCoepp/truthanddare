@@ -11,6 +11,7 @@ ApplicationWindow {
 
     property var firstOpen: LocalStorage_Settings.dbGet("firstOpen") || "false"
 
+
     StackView{
         id: contentFrame
         anchors.fill: parent
@@ -18,7 +19,7 @@ ApplicationWindow {
     }
     Component.onCompleted: {
         LocalStorage_Settings.dbInit()
-        console.log(LocalStorage_Settings.dbGet("firstOpen"))
+        //console.log(LocalStorage_Settings.dbGet("firstOpen"))
         if(firstOpen !== "true"){
             contentFrame.replace("qrc:/main/FirstOpen_Page.qml")
             LocalStorage_Settings.dbSet("firstOpen", "true")

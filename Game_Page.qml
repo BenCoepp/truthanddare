@@ -6,4 +6,6 @@ Rectangle {
         anchors.centerIn: parent
         text: "Game Page"
     }
+
+    // T|D :: M|F :: Age :: Mode :: [Options-Preferences] :: Points ::
 }

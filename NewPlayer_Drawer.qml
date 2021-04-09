@@ -10,6 +10,10 @@ Drawer {
     height: parent.height/2
     edge: Qt.BottomEdge
     interactive: false
+    background: Rectangle{
+        anchors.fill: parent
+        color: "#282442"
+    }
 
     property var moreInfoA: false
 
@@ -21,6 +25,7 @@ Drawer {
             moreLabel.text = "More Info"
             moreInfoA = false
             moreInfoBox.visible = false
+            moreInfoBox2.visible = false
         }
     }
 
@@ -30,6 +35,7 @@ Drawer {
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         text: "New Player"
+        color: "white"
         font.pointSize: 15
         font.bold: true
     }
@@ -40,6 +46,23 @@ Drawer {
         anchors.rightMargin: 10
         onClicked: {
             newPlayer_drawer.close()
+        }
+        Rectangle{
+            anchors.fill: parent
+            radius: 100
+            color: "#282442"
+            border.color: "#fc5b19"
+            border.width: 2
+            antialiasing: true
+
+            Image {
+                id: openButtonIcon
+                anchors.centerIn: parent
+                width: parent.width-6
+                height: parent.height-6
+                antialiasing: true
+                source: "qrc:/Assetes/Icons/delete_icon.png"
+            }
         }
     }
 
@@ -89,31 +112,70 @@ Drawer {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 70
         width: parent.width
-        height: parent.height/2
+        height: parent.height/2-50
         CheckBox {
-            checked: true
+            text: qsTr("Band")
+            onCheckedChanged: {
+                if(this.checked === true){
+                    if(playerTagModel.count <= 10){
+                        playerTagModel.append({"titel": this.text, "icon": "qrc:/Assetes/Icons/Expand Arrow icon.png"})
+                    }else{
+                        console.log("currently full")
+                    }
+                }else{
+                    //playerTagModel.remove()
+                }
+            }
+        }
+        CheckBox {
+            text: qsTr("Second")
+        }
+        CheckBox {
+            text: qsTr("Third")
+        }
+        CheckBox {
             text: qsTr("First")
         }
         CheckBox {
             text: qsTr("Second")
         }
         CheckBox {
-            checked: true
             text: qsTr("Third")
         }
         CheckBox {
-            checked: true
+            text: qsTr("First")
+        }
+        CheckBox {
+            text: qsTr("Second")
+        }
+    }
+    ColumnLayout {
+        id: moreInfoBox2
+        visible: false
+        anchors.left: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 70
+        width: parent.width
+        height: parent.height/2-50
+        CheckBox {
             text: qsTr("First")
         }
         CheckBox {
             text: qsTr("Second")
         }
         CheckBox {
-            checked: true
             text: qsTr("Third")
         }
         CheckBox {
-            checked: true
+            text: qsTr("First")
+        }
+        CheckBox {
+            text: qsTr("Second")
+        }
+        CheckBox {
+            text: qsTr("Third")
+        }
+        CheckBox {
             text: qsTr("First")
         }
         CheckBox {
@@ -131,21 +193,28 @@ Drawer {
             id: moreLabel
             anchors.centerIn: parent
             text: "More Info"
+            color: "white"
         }
         onClicked: {
             if(moreInfoA === false){
                 drawerRoot.height = drawerRoot.height*2
                 moreLabel.text = "Less Info"
                 moreInfoA = true
+                moreInfoBox2.visible = true
                 moreInfoBox.visible = true
             }else{
                 drawerRoot.height = drawerRoot.height/2
                 moreLabel.text = "More Info"
                 moreInfoA = false
+                moreInfoBox2.visible = false
                 moreInfoBox.visible = false
             }
         }
     }
+    ListModel{
+        id: playerTagModel
+    }
+
     Button{
         id: submitButton
         anchors.bottom: parent.bottom
@@ -157,7 +226,8 @@ Drawer {
             newPlayerListModel.append({
                 "playerName": playerName_Input.text,
                 "playerAge": playerAge_Input.value,
-                "playerGender": playerGender_Input.currentText
+                "playerGender": playerGender_Input.currentText,
+                "palyerTagModel": playerTagModel
             })
             newPlayer_drawer.close()
         }

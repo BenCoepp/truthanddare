@@ -3,7 +3,6 @@ import QtQuick.Controls 2.15
 
 RoundButton {
     id: root
-    text: "+"
     signal button1Clicked()
     signal button2Clicked()
     signal button3Clicked()
@@ -12,17 +11,36 @@ RoundButton {
     property var button1Icon: ""
     property var button2Icon: ""
     property var button3Icon: ""
+    Rectangle{
+        anchors.centerIn: parent
+        width: 35
+        height: 35
+        radius: 100
+        color: "#282442"
+        border.color: "#fc5b19"
+        border.width: 2
 
+        Image {
+            id: openButtonIcon
+            anchors.centerIn: parent
+            width: parent.width-6
+            height: parent.height-6
+            antialiasing: true
+            source: "qrc:/Assetes/Icons/plus_icon.png"
+        }
+    }
     onClicked: {
         if(isOpen === false){
             button1.visible = true
             button2.visible = true
             button3.visible = true
+            openButtonIcon.source = "qrc:/Assetes/Icons/delete_icon.png"
             isOpen = true
         }else{
             button1.visible = false
             button2.visible = false
             button3.visible = false
+            openButtonIcon.source = "qrc:/Assetes/Icons/plus_icon.png"
             isOpen = false
         }
     }
@@ -35,16 +53,21 @@ RoundButton {
         width: parent.width
         height: parent.height
         onClicked: button1Clicked()
-        background: Rectangle{
-            anchors.fill: parent
+        Rectangle{
+            anchors.centerIn: parent
+            width: 35
+            height: 35
             radius: 100
+            color: "#282442"
+            border.color: "#fc5b19"
+            border.width: 2
 
             Image {
                 anchors.centerIn: parent
-                width: parent.width-2
-                height: parent.height-2
+                width: parent.width-6
+                height: parent.height-6
                 antialiasing: true
-                source: button1Icon
+                source: "qrc:/Assetes/Icons/plus_icon.png"
             }
         }
     }
@@ -56,15 +79,20 @@ RoundButton {
         visible: false
         onClicked: button2Clicked()
         Rectangle{
-            anchors.fill: parent
+            anchors.centerIn: parent
+            width: 35
+            height: 35
             radius: 100
+            color: "#282442"
+            border.color: "#fc5b19"
+            border.width: 2
 
             Image {
                 anchors.centerIn: parent
-                width: parent.width-2
-                height: parent.height-2
+                width: parent.width-6
+                height: parent.height-6
                 antialiasing: true
-                source: button2Icon
+                source: "qrc:/Assetes/Icons/plus_icon.png"
             }
         }
     }
@@ -76,15 +104,20 @@ RoundButton {
         visible: false
         onClicked: button3Clicked()
         Rectangle{
-            anchors.fill: parent
+            anchors.centerIn: parent
+            width: 35
+            height: 35
             radius: 100
+            color: "#282442"
+            border.color: "#fc5b19"
+            border.width: 2
 
             Image {
                 anchors.centerIn: parent
-                width: parent.width-2
-                height: parent.height-2
+                width: parent.width-6
+                height: parent.height-6
                 antialiasing: true
-                source: button3Icon
+                source: "qrc:/Assetes/Icons/plus_icon.png"
             }
         }
     }

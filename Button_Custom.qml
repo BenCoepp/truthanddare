@@ -1,17 +1,18 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-
 MouseArea{
     id: root
+    anchors.horizontalCenter: parent.horizontalCenter
     width: parent.width
     height: 140
 
     property var buttonTitel: "Button Titel"
-    property var titelColor: "white"
+    property var titelColor: "#fc5b19"
     property var buttonSubTitel: "Button SubTitel"
     property var subTitelColor: "white"
-    property var buttonColor: "grey"
+    property var buttonColor: "#1f344b"
+    property var bButtonColor: "#1f344b"
 
     Rectangle{
         anchors.centerIn: parent
@@ -20,7 +21,6 @@ MouseArea{
         color: buttonColor
         radius: 5
     }
-
     Label{
         id: titelLabel
         text: buttonTitel
@@ -30,7 +30,7 @@ MouseArea{
         height: 50
         color: titelColor
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: 20
     }
     Label{
         anchors.top: parent.top
@@ -39,7 +39,7 @@ MouseArea{
         font.pointSize: 10
         color: subTitelColor
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: 20
     }
     Rectangle{
         anchors.bottom: parent.bottom
@@ -47,6 +47,7 @@ MouseArea{
         width: parent.width-20
         height: 50
         radius: 5
+        color: bButtonColor
 
         Image {
             anchors.centerIn: parent
