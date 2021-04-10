@@ -8,7 +8,7 @@ Item {
         id: newGameSwipeView
         anchors.fill: parent
         interactive: false
-        currentIndex: 1
+        currentIndex: 0
         Rectangle{
             color: "#282442"
             NavBar_Custom{
@@ -236,8 +236,8 @@ Item {
                     }
                 }
                 delegate: MouseArea{
-                    width: Screen.width
-                    height: Screen.width
+                    width: 360
+                    height: 360
 
                     Rectangle{
                         anchors.centerIn: parent
@@ -353,17 +353,48 @@ Item {
             }
         }
         Rectangle{
+            color: "#282442"
             NavBar_Custom{
                 navText: "What do you want?"
                 onBackButtonClicked: {
                     contentFrame.replace("qrc:/Game/Open_Page.qml")
                 }
             }
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 50
-                text: "things you have"
+            ObjectModel{
+                id: chooseModel
+                ComboBox {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width-20
+                    height: 50
+                    model: ["First", "Second", "Third"]
+                }
+                GridView{
+                    width: newGameSwipeView.width
+                    model: ListModel{
+                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
+                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
+                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
+                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
+                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
+                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
+                    }
+                    delegate: Item {
+                        width: newGameSwipeView.width/2
+                        height: 50
+                        CheckBox{
+                            anchors.centerIn: parent
+                            text: titel
+                        }
+                    }
+                }
+            }
+
+            ListView {
+                anchors.bottom: parent.bottom
+                width: parent.width
+                height: parent.height-50
+                model: chooseModel
+                spacing: 10
             }
             MouseArea{
                 anchors.bottom: parent.bottom
@@ -381,6 +412,7 @@ Item {
                 height: 50
                 onClicked: {
                     contentFrame.replace("qrc:/Game/Game_Page.qml")
+                    //alle spiel daten in den local storage game_table
                 }
             }
         }

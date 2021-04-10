@@ -33,5 +33,6 @@
     <qresource prefix="/Settings_Page">
         <file>Settings_Page.qml</file>
         <file>Settings_Item.qml</file>
+        <file>ColorPicker_Delegate.qml</file>
     </qresource>
 </RCC>
