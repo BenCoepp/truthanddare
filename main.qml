@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.LocalStorage 2.12
 import "qrc:/Database/LocalStorage_Settings.js" as LocalStorage_Settings
-
+import JSON 1.0
 ApplicationWindow {
     visible: true
     width: 360
@@ -17,7 +17,12 @@ ApplicationWindow {
         anchors.fill: parent
         initialItem: Qt.resolvedUrl("qrc:/main/Load_Page.qml")
     }
+    JSON{
+        id: jsonHandler
+    }
+
     Component.onCompleted: {
+        getData()
         LocalStorage_Settings.dbInit()
         //console.log(LocalStorage_Settings.dbGet("firstOpen"))
         if(firstOpen !== "true"){
@@ -26,5 +31,17 @@ ApplicationWindow {
         }else{
             contentFrame.replace("qrc:/Game/Open_Page.qml")
         }
+    }
+    function getData(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                console.log(xhr.responseText)
+                jsonHandler.writeJson("data",xhr.responseText)
+                return xhr.responseText;
+            }
+        }
+        xhr.open("Get", "https://truthanddare-bencoepp-default-rtdb.europe-west1.firebasedatabase.app/.json");
+        xhr.send();
     }
 }
