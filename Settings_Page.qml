@@ -60,10 +60,19 @@ Rectangle{
         height: parent.height-50
         model: settingsPageModel
         spacing: 20
-        footer: Item {
+        footerPositioning: ListView.OverlayFooter
+        footer: MouseArea {
             width: parent.width
             height: 50
+            Rectangle{
+                anchors.fill: parent
+                color: "green"
+            }
 
+            Label{
+                anchors.centerIn: parent
+                text: "Save"
+            }
         }
     }
 }
