@@ -29,6 +29,7 @@
         <file>Icons/Expand Arrow icon.png</file>
         <file>Icons/delete_icon.png</file>
         <file>Icons/plus_icon.png</file>
+        <file>Icons/app_icon.png</file>
     </qresource>
     <qresource prefix="/Settings_Page">
         <file>Settings_Page.qml</file>
