@@ -13,6 +13,20 @@ Rectangle{
 
     ObjectModel{
         id: settingsPageModel
+
+        Item {
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width
+            height: 50
+            Label{
+                anchors.centerIn: parent
+                text: "Profile"
+                font.bold: true
+                font.pointSize: 25
+                color: "white"
+            }
+        }
+
         Settings_Item{
             anchors.horizontalCenter: parent.horizontalCenter
             titel: "Your Name"
@@ -24,6 +38,19 @@ Rectangle{
             titel: "Age"
             value: 20
             optionType: "int"
+        }
+
+        Item {
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width
+            height: 50
+            Label{
+                anchors.centerIn: parent
+                text: "Generall"
+                font.bold: true
+                font.pointSize: 25
+                color: "white"
+            }
         }
         Settings_Item{
             anchors.horizontalCenter: parent.horizontalCenter

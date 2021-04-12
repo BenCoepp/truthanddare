@@ -30,6 +30,10 @@
         <file>Icons/delete_icon.png</file>
         <file>Icons/plus_icon.png</file>
         <file>Icons/app_icon.png</file>
+        <file>Icons/arrow_icon.png</file>
+        <file>Icons/heart_icon.png</file>
+        <file>Icons/trashcan_icon.png</file>
+        <file>Icons/user_icon.png</file>
     </qresource>
     <qresource prefix="/Settings_Page">
         <file>Settings_Page.qml</file>
