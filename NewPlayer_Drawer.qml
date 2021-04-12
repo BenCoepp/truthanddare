@@ -24,8 +24,7 @@ Drawer {
             drawerRoot.height = drawerRoot.height/2
             moreLabel.text = "More Info"
             moreInfoA = false
-            moreInfoBox.visible = false
-            moreInfoBox2.visible = false
+            optionsListView.visible = false
         }
     }
 
@@ -103,86 +102,63 @@ Drawer {
             to: 99
         }
     }
-
-    ColumnLayout {
-        id: moreInfoBox
-        visible: false
-        anchors.left: parent.left
-        anchors.leftMargin: 10
+    ListView{
+        id: optionsListView
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 70
-        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width-20
+        visible: false
         height: parent.height/2-50
-        CheckBox {
-            text: qsTr("Band")
-            onCheckedChanged: {
-                if(this.checked === true){
-                    if(playerTagModel.count <= 10){
-                        playerTagModel.append({"titel": this.text, "icon": "qrc:/Assetes/Icons/Expand Arrow icon.png"})
-                    }else{
-                        console.log("currently full")
+        model: ListModel{
+            ListElement{
+                titel: "Bandage"
+                value: "bandages"
+                minAge: 18
+                gender: "Male"
+            }
+            ListElement{
+                titel: "Dildo"
+                value: "dildo"
+                minAge: 18
+                gender: "Male"
+            }
+            ListElement{
+                titel: "Strapon"
+                value: "strapon"
+                minAge: 18
+                gender: "Male"
+            }
+        }
+        delegate: Item {
+            width: parent
+            height: 50
+            visible: if(
+                    playerAge_Input.value >= minAge &&
+                    playerGender_Input.currentText === gender
+                    ){true}else{false}
+            CheckBox{
+                anchors.verticalCenter: parent.verticalCenter
+                text: titel
+                onCheckedChanged: {
+                    function find(model, criteria) {
+                      for(var i = 0; i < model.count; ++i) if (criteria(model.get(i))) return model.get(i)
+                      return null
                     }
-                }else{
-                    //playerTagModel.remove()
+                    if(this.checked === true){
+                        playerTagModel.append({"value": value,
+                                                "titel": titel,
+                                                "icon": "qrc:/Assetes/Icons/user_icon.png"
+                                              })
+                    }else{
+                        playerTagModel.remove(find(playerTagModel, function(item) { return item.name === value }))
+                    }
                 }
             }
         }
-        CheckBox {
-            text: qsTr("Second")
-        }
-        CheckBox {
-            text: qsTr("Third")
-        }
-        CheckBox {
-            text: qsTr("First")
-        }
-        CheckBox {
-            text: qsTr("Second")
-        }
-        CheckBox {
-            text: qsTr("Third")
-        }
-        CheckBox {
-            text: qsTr("First")
-        }
-        CheckBox {
-            text: qsTr("Second")
-        }
     }
-    ColumnLayout {
-        id: moreInfoBox2
-        visible: false
-        anchors.left: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 70
-        width: parent.width
-        height: parent.height/2-50
-        CheckBox {
-            text: qsTr("First")
-        }
-        CheckBox {
-            text: qsTr("Second")
-        }
-        CheckBox {
-            text: qsTr("Third")
-        }
-        CheckBox {
-            text: qsTr("First")
-        }
-        CheckBox {
-            text: qsTr("Second")
-        }
-        CheckBox {
-            text: qsTr("Third")
-        }
-        CheckBox {
-            text: qsTr("First")
-        }
-        CheckBox {
-            text: qsTr("Second")
-        }
-    }
-    MouseArea{
+
+   MouseArea{
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 50
         anchors.horizontalCenter: parent.horizontalCenter
@@ -200,19 +176,22 @@ Drawer {
                 drawerRoot.height = drawerRoot.height*2
                 moreLabel.text = "Less Info"
                 moreInfoA = true
-                moreInfoBox2.visible = true
-                moreInfoBox.visible = true
+                optionsListView.visible = true
             }else{
                 drawerRoot.height = drawerRoot.height/2
                 moreLabel.text = "More Info"
                 moreInfoA = false
-                moreInfoBox2.visible = false
-                moreInfoBox.visible = false
+                optionsListView.visible = false
             }
         }
     }
     ListModel{
         id: playerTagModel
+        onCountChanged: {
+            for(var i= 0; i < this.count; i++){
+                console.log(this.get(i).value + "  " + i)
+            }
+        }
     }
 
     Button{
@@ -227,7 +206,7 @@ Drawer {
                 "playerName": playerName_Input.text,
                 "playerAge": playerAge_Input.value,
                 "playerGender": playerGender_Input.currentText,
-                "palyerTagModel": playerTagModel
+                "playerTagData": playerTagModel
             })
             newPlayer_drawer.close()
         }

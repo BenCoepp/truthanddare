@@ -1,4 +1,4 @@
-#include "json.h"
+#include "json_handler.h"
 #include <QDebug>
 #include <iostream>
 #include <fstream>
@@ -8,14 +8,15 @@
 #include <QJsonArray>
 #include <QJsonParseError>
 #include <QJsonValue>
+#include <QAbstractListModel>
 using namespace std;
 
-JSON::JSON(QObject *parent) :
+JSON_HANDLER::JSON_HANDLER(QObject *parent) :
 QObject(parent)
 {
 }
 
-void JSON::writeJson(QString file, QString out)
+void JSON_HANDLER::writeJson(QString file, QString out)
 {
     // Create and open a text file
       ofstream MyFile(file.toStdString() + ".json");
@@ -31,7 +32,7 @@ void JSON::writeJson(QString file, QString out)
       // Close the files
       MyFile.close();
 }
-QString JSON::readJson(QString fileName){
+QString JSON_HANDLER::readJson(QString fileName){
     QString val;
     QFile file;
     file.setFileName(fileName+".json");
@@ -39,4 +40,11 @@ QString JSON::readJson(QString fileName){
     val = file.readAll();
     file.close();
     return val;
+}
+
+void JSON_HANDLER::writeListModel(QString fileName, QString out)
+{
+    ofstream MyFile(fileName.toStdString() + ".json");
+    MyFile << out.toStdString();
+    MyFile.close();
 }

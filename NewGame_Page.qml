@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.12
 import "qrc:/Components"
+import JSON_HANDLER 1.0
+
 Item {
     property var currentMode: 0
     SwipeView{
@@ -128,27 +130,23 @@ Item {
                                 visible: false
                                 anchors.fill: parent
                                 cellHeight: 35
-                                cellWidth: 90
-                                model: playerTagModel
+                                cellWidth: 80
+                                model: playerTagData
                                 delegate: Item {
                                     width: 80
                                     height: 25
-                                    Rectangle{
-                                        anchors.fill: parent
-                                        color: "red"
-                                        Image {
-                                            anchors.left: parent.left
-                                            anchors.verticalCenter: parent.verticalCenter
-                                            source: icon
-                                            antialiasing: true
-                                            width: 20
-                                            height: 20
-                                        }
-                                        Label{
-                                            anchors.right: parent.right
-                                            anchors.verticalCenter: parent.verticalCenter
-                                            text: titel
-                                        }
+                                    Image {
+                                        anchors.left: parent.left
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        source: icon
+                                        antialiasing: true
+                                        width: 20
+                                        height: 20
+                                    }
+                                    Label{
+                                        anchors.right: parent.right
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: titel
                                     }
                                 }
                             }
@@ -412,13 +410,21 @@ Item {
                 height: 50
                 onClicked: {
                     contentFrame.replace("qrc:/Game/Game_Page.qml")
-                    //alle spiel daten in den local storage game_table
+                    //alle spiel daten in den local file
+                    //currentMode:
+                    //players:[]
+                    //options:[]
+
+                    //jsonHandler.writeListModel("testOutput", newPlayerListModel.get(1).playerName)
                 }
             }
         }
     }
     NewPlayer_Drawer{
         id: newPlayer_drawer
+    }
+    JSON_HANDLER{
+        id: jsonHandler
     }
 }
 

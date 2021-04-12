@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.LocalStorage 2.12
 import "qrc:/Database/LocalStorage_Settings.js" as LocalStorage_Settings
-import JSON 1.0
+import JSON_HANDLER 1.0
 ApplicationWindow {
     visible: true
     width: 360
@@ -17,7 +17,7 @@ ApplicationWindow {
         anchors.fill: parent
         initialItem: Qt.resolvedUrl("qrc:/main/Load_Page.qml")
     }
-    JSON{
+    JSON_HANDLER{
         id: jsonHandler
     }
 
@@ -36,7 +36,6 @@ ApplicationWindow {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if(xhr.readyState === XMLHttpRequest.DONE) {
-                console.log(xhr.responseText)
                 jsonHandler.writeJson("data",xhr.responseText)
                 return xhr.responseText;
             }
