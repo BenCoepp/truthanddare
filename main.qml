@@ -22,7 +22,6 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        getData()
         LocalStorage_Settings.dbInit()
         //console.log(LocalStorage_Settings.dbGet("firstOpen"))
         if(firstOpen !== "true"){
@@ -31,16 +30,5 @@ ApplicationWindow {
         }else{
             contentFrame.replace("qrc:/Game/Open_Page.qml")
         }
-    }
-    function getData(){
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if(xhr.readyState === XMLHttpRequest.DONE) {
-                jsonHandler.writeJson("data",xhr.responseText)
-                return xhr.responseText;
-            }
-        }
-        xhr.open("Get", "https://truthanddare-bencoepp-default-rtdb.europe-west1.firebasedatabase.app/.json");
-        xhr.send();
     }
 }

@@ -2,6 +2,8 @@
 #define JSON_HANDLER_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 
 class JSON_HANDLER : public QObject
 {
@@ -15,7 +17,10 @@ Q_INVOKABLE void writeListModel(QString fileName, QString out);
 signals:
 
 public slots:
-
+    void downloadTadData();
+private:
+    QNetworkAccessManager*m_networkManager;
+    QNetworkReply*m_networkReply;
 };
 
 #endif // HELLOCPP_H
