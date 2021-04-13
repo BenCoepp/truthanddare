@@ -9,7 +9,6 @@ Popup {
     modal: true
     focus: true
 
-
     Label{
         anchors.fill: parent
         text: selectedType

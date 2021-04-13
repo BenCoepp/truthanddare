@@ -410,12 +410,15 @@ Item {
                 height: 50
                 onClicked: {
                     contentFrame.replace("qrc:/Game/Game_Page.qml")
+                    var currentGame = {
+                        "currentMode": currentMode
+                    }
                     //alle spiel daten in den local file
                     //currentMode:
                     //players:[]
                     //options:[]
 
-                    //jsonHandler.writeListModel("testOutput", newPlayerListModel.get(1).playerName)
+                    jsonHandler.writeListModel("current_Game", JSON.stringify(currentGame))
                 }
             }
         }

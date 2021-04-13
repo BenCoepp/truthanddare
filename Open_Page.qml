@@ -16,6 +16,14 @@ Rectangle{
             }
         }
         Button_Custom{
+            buttonTitel: "Online Game"
+            buttonSubTitel: "Join and or Create a Room for Online Game"
+            Layout.alignment: Qt.AlignHCenter
+            onClicked: {
+                contentFrame.replace("qrc:/Game/NewGame_Page.qml")
+            }
+        }
+        Button_Custom{
             buttonTitel: "Add New"
             buttonSubTitel: "Add New Truth & Dares to Your Games or Online"
             Layout.alignment: Qt.AlignHCenter
