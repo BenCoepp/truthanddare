@@ -16,6 +16,8 @@
         <file>ListView_Control_Button.qml</file>
         <file>TextInput_Custom.qml</file>
         <file>NavBar_Custom.qml</file>
+        <file>QRCode.qml</file>
+        <file>qqr.js</file>
     </qresource>
     <qresource prefix="/Add_TAD">
         <file>AddTAD_Page.qml</file>
