@@ -6,19 +6,20 @@ Rectangle {
     color: "#282442"
 
     QRCode {
-            anchors.top : parent.top
-            anchors.topMargin : 30
-            anchors.horizontalCenter : parent.horizontalCenter
-            width : 320
-            height : 320
-            value : inputField.text
-            level : "H"
-        }
-        TextInput {
-            id : inputField
-            anchors.bottom : parent.bottom
-            anchors.bottomMargin : 30
-            anchors.horizontalCenter : parent.horizontalCenter
-            text : "https://www.youtube.com/watch?v=7B2PIVSWtJA"
-        }
+        id: qrCode
+        anchors.top : parent.top
+        anchors.topMargin : 50
+        anchors.horizontalCenter : parent.horizontalCenter
+        width : parent.width-27
+        height : parent.width-27
+        value : "https://www.youtube.com/watch?v=7B2PIVSWtJA"
+        level : "H"
+    }
+    Label{
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: qrCode.height+100
+        text: qrCode.value
+        color: "white"
+    }
 }

@@ -90,7 +90,8 @@ Rectangle {
             topRecSliderAN.start()
         }
         Label{
-            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             text: "Join Room"
         }
     }
@@ -103,7 +104,8 @@ Rectangle {
             bottomRecSliderAN.start()
         }
         Label{
-            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             text: "Create Room"
         }
     }
