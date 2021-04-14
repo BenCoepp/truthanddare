@@ -1,30 +1,43 @@
-# This is a basic workflow to help you get started with Actions
+name: QMake Build Matrix
 
-name: CI
+on: [push]
 
-# Controls when the action will run. 
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+env:
+  QT_VERSION: 5.14.0
+  QT_CREATOR_VERSION: 4.11.0
+  PLUGIN_PRO: doxygen.pro
+  PLUGIN_NAME: Doxygen
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      matrix:
+        config:
+        - {
+            name: "Windows Latest x64", artifact: "Windows-x64.zip",
+            os: windows-latest,
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          }
+        - {
+            name: "Windows Latest x86", artifact: "Windows-x86.zip",
+            os: windows-latest,
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
+          }
+        - {
+            name: "Linux Latest x64", artifact: "Linux-x64.zip",
+            os: ubuntu-latest
+          }
+        - {
+            name: "macOS Latest x64", artifact: "macOS-x64.zip",
+            os: macos-latest
+          }
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v1 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      name: Installing system libs
+    - uses: actions/checkout@v1
+
+    - name: Installing system libs
       shell: cmake -P {0}
       run: |
         if ("${{ runner.os }}" STREQUAL "Linux")
