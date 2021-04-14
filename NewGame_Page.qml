@@ -206,35 +206,35 @@ Item {
                         titel: "Easy"
                         count: 520
                         like: 899
-                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                        desc: qsTr("Looking for a fun but simple game that is perfect for getting to know your friends and family. Best for the age of 6-14, if you are looking for a good time.")
                     }
                     ListElement{
                         value: "2"
                         titel: "Normal"
                         count: 520
                         like: 899
-                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                        desc: qsTr("You are Normal and you want to do normal stuff? Well then this is the Game Mode for you, the most normal stuff imaginable, so try to have fun.")
                     }
                     ListElement{
                         value: "3"
                         titel: "Couple"
                         count: 520
                         like: 899
-                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                        desc: "Couples do what Couples do, and you want to do that. Well welcome to the perfect mode for you and your partner in crime because it is about to get fancy."
                     }
                     ListElement{
                         value: "4"
                         titel: "Hardcore"
                         count: 520
                         like: 899
-                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                        desc: "You need it, and you want it so you are going to get it. No hessitation and no remorse, so let us see who likes what without hesitation."
                     }
                     ListElement{
                         value: "5"
                         count: 520
                         like: 899
                         titel: "Devil"
-                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                        desc: "The Devil is loose and you probebly are going to be his friend so let us play the round of your lives, maybe even for it......"
                     }
                 }
                 delegate: MouseArea{
@@ -245,8 +245,8 @@ Item {
                         anchors.centerIn: parent
                         width: parent.width-20
                         height: parent.height-20
-                        color: "lightblue"
-                        radius: 5
+                        color: "#fc5b19"
+                        radius: 10
 
                         Item {
                             anchors.verticalCenter: parent.verticalCenter
@@ -261,7 +261,7 @@ Item {
                                 antialiasing: true
                                 width: 15
                                 height: 15
-                                source: "qrc:/Assetes/Icons/plus_icon.png"
+                                source: "qrc:/Assetes/Icons/heart_icon.png"
                             }
                             Label{
                                 id: countID
@@ -283,7 +283,7 @@ Item {
                                 antialiasing: true
                                 width: 15
                                 height: 15
-                                source: "qrc:/Assetes/Icons/plus_icon.png"
+                                source: "qrc:/Assetes/Icons/heart_icon.png"
                             }
                             Label{
                                 id: likeID
@@ -297,7 +297,8 @@ Item {
                             anchors.bottom: parent.bottom
                             width: parent.width
                             height: parent.height/2
-                            radius: 5
+                            radius: 10
+                            color: "#1f344b"
 
                             Label{
                                 anchors.top: parent.top
@@ -317,6 +318,8 @@ Item {
                                 width: parent.width-20
                                 height: parent.height-50
                                 wrapMode: Text.WrapAnywhere
+                                font.pointSize: 12
+                                color: "white"
                             }
                         }
                     }
@@ -337,8 +340,17 @@ Item {
                 }
                 Rectangle{
                     anchors.fill: parent
-                    color: "green"
+                    color: "#1f344b"
                 }
+                Image {
+                    anchors.centerIn: parent
+                    width: parent.height-20
+                    height: width
+                    rotation: 90
+                    antialiasing: true
+                    source: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+                }
+
             }
             MouseArea{
                 anchors.bottom: parent.bottom
@@ -350,7 +362,16 @@ Item {
                 }
                 Rectangle{
                     anchors.fill: parent
-                    color: "red"
+                    color: "#fc5b19"
+                }
+                Image {
+                    anchors.centerIn: parent
+                    anchors.horizontalCenterOffset: 10
+                    width: parent.height-20
+                    height: width
+                    rotation: -90
+                    antialiasing: true
+                    source: "qrc:/Assetes/Icons/Expand Arrow icon.png"
                 }
             }
         }

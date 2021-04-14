@@ -49,3 +49,4 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
 
 HEADERS += \
     json_handler.h
+
