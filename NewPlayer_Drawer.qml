@@ -129,9 +129,45 @@ Drawer {
                 minAge: 18
                 gender: "Male"
             }
+            ListElement{
+                titel: "Bandage"
+                value: "bandages"
+                minAge: 18
+                gender: "Female"
+            }
+            ListElement{
+                titel: "Dildo"
+                value: "dildo"
+                minAge: 18
+                gender: "Female"
+            }
+            ListElement{
+                titel: "Strapon"
+                value: "strapon"
+                minAge: 18
+                gender: "Female"
+            }
+            ListElement{
+                titel: "Feet-Fetish"
+                value: "feet"
+                minAge: 18
+                gender: "Male"
+            }
+            ListElement{
+                titel: "Kissing"
+                value: "kissing"
+                minAge: 16
+                gender: "Male"
+            }
+            ListElement{
+                titel: "Kissing"
+                value: "kissing"
+                minAge: 16
+                gender: "Female"
+            }
         }
         delegate: Item {
-            width: parent
+            width: parent.width
             height: 50
             visible: if(
                     playerAge_Input.value >= minAge &&

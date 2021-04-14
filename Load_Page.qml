@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Rectangle{
-    color: "#2C3E50"
+    color: "#282442"
 
     BusyIndicator{
         anchors.centerIn: parent
@@ -16,5 +16,8 @@ Rectangle{
         color: "white"
         font.bold: true
         font.pointSize: 20
+    }
+    Component.onCompleted: {
+        LocalStorage_Settings.dbInit()
     }
 }

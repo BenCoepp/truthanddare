@@ -10,7 +10,7 @@ Item {
         id: newGameSwipeView
         anchors.fill: parent
         interactive: false
-        currentIndex: 0
+        currentIndex: 1
         Rectangle{
             color: "#282442"
             NavBar_Custom{
@@ -70,10 +70,12 @@ Item {
                         if(isOpen === false){
                             this.height = this.height*3
                             tagGridView.visible = true
+                            openCloseIcon.rotation = 180
                             isOpen = true
                         }else{
                             this.height = this.height/3
                             tagGridView.visible = false
+                            openCloseIcon.rotation = 0
                             isOpen = false
                         }
                     }
@@ -94,7 +96,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: 30
                                 height: 30
-                                source: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+                                source: "qrc:/Assetes/Icons/user_icon.png"
                             }
                             Item {
                                 anchors.centerIn: parent
@@ -112,17 +114,19 @@ Item {
                                 }
                             }
                             Image {
+                                id: openCloseIcon
                                 anchors.right: parent.right
                                 anchors.rightMargin: 10
                                 anchors.verticalCenter: parent.verticalCenter
-                                width: 30
-                                height: 30
+                                width: 20
+                                height: 20
                                 source: "qrc:/Assetes/Icons/Expand Arrow icon.png"
                             }
                         }
                         Item {
                             anchors.bottom: parent.bottom
-                            width: parent.width
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            width: parent.width-20
                             height: parent.height-50
 
                             GridView{
@@ -193,7 +197,7 @@ Item {
                 height: parent.width
                 orientation: ListView.Horizontal
                 snapMode: ListView.SnapToItem
-                highlight: Rectangle {color: 'grey'}
+                //highlight: Rectangle {color: 'grey'}
                 focus: true
                 model: ListModel{
                     id: modeListModel
@@ -209,28 +213,28 @@ Item {
                         titel: "Normal"
                         count: 520
                         like: 899
-                        desc: ""
+                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                     }
                     ListElement{
                         value: "3"
                         titel: "Couple"
                         count: 520
                         like: 899
-                        desc: ""
+                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                     }
                     ListElement{
                         value: "4"
                         titel: "Hardcore"
                         count: 520
                         like: 899
-                        desc: ""
+                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                     }
                     ListElement{
                         value: "5"
                         count: 520
                         like: 899
                         titel: "Devil"
-                        desc: ""
+                        desc: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                     }
                 }
                 delegate: MouseArea{
@@ -358,30 +362,31 @@ Item {
                     contentFrame.replace("qrc:/Game/Open_Page.qml")
                 }
             }
+            ListModel{
+                id: gameOptions
+            }
             ObjectModel{
                 id: chooseModel
                 ComboBox {
+                    id: playerSelectionModeSelect
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: parent.width-20
                     height: 50
-                    model: ["First", "Second", "Third"]
+                    model: ["Random Player", "Semi-Random Player", "Clockwise","Counter Clockwise"]
                 }
-                GridView{
-                    width: newGameSwipeView.width
-                    model: ListModel{
-                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
-                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
-                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
-                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
-                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
-                        ListElement{titel: "Ice Cream"; value: "ice_cream"}
-                    }
-                    delegate: Item {
-                        width: newGameSwipeView.width/2
-                        height: 50
-                        CheckBox{
-                            anchors.centerIn: parent
-                            text: titel
+
+                CheckBox{
+                    width: newGameSwipeView.width-20
+                    text: "Sex"
+                    onCheckedChanged: {
+                        function find(model, criteria) {
+                          for(var i = 0; i < model.count; ++i) if (criteria(model.get(i))) return model.get(i)
+                          return null
+                        }
+                        if(this.checked === true){
+                            gameOptions.append({"value": this.text.toLowerCase(),"titel": this.text})
+                        }else{
+                            gameOptions.remove(find(gameOptions, function(item) { return item.name === value }))
                         }
                     }
                 }
@@ -409,16 +414,24 @@ Item {
                 anchors.right: parent.right
                 height: 50
                 onClicked: {
-                    contentFrame.replace("qrc:/Game/Game_Page.qml")
                     var currentGame = {
-                        "currentMode": currentMode
+                        "currentMode": currentMode,
+                        "gameOptions": [],
+                        "players": [],
                     }
                     //alle spiel daten in den local file
                     //currentMode:
                     //players:[]
                     //options:[]
-
-                    jsonHandler.writeListModel("current_Game", JSON.stringify(currentGame))
+                    gameOptions.append({"playerSelectionMode": playerSelectionModeSelect.currentText.toLowerCase()})
+                    for(var i = 0; i< newPlayerListModel.count; i++){
+                        currentGame.players.push(newPlayerListModel.get(i))
+                    }
+                    for(var j = 0; j< newPlayerListModel.count-1; j++){
+                        currentGame.gameOptions.push(gameOptions.get(j))
+                    }
+                    jsonHandler.writeJson("current_Game", JSON.stringify(currentGame))
+                    contentFrame.replace("qrc:/Game/Game_Page.qml")
                 }
             }
         }

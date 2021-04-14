@@ -3,8 +3,7 @@ import QtQuick.Controls 2.15
 
 MouseArea{
     id: root
-    anchors.horizontalCenter: parent.horizontalCenter
-    width: parent.width
+    width: 360
     height: 140
 
     property var buttonTitel: "Button Titel"

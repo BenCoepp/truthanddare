@@ -7,6 +7,7 @@ Rectangle {
     height: 640
 
     property var selectedType: ""
+    property var currentPlayer: "Player 1"
 
     Canvas{
         anchors.fill:parent
@@ -130,6 +131,7 @@ Rectangle {
                 anRcrec.start()
                 dareTitelLabel.visible = false
                 swipeLabel.visible = false
+                navbar.visible = false
                 swipeLabelTimer.stop()
                 game_popup.open()
             }
@@ -139,6 +141,7 @@ Rectangle {
                 anLcrec.start()
                 truthTitelLabel.visible = false
                 swipeLabel.visible = false
+                navbar.visible = false
                 swipeLabelTimer.stop()
                 game_popup.open()
             }
@@ -149,6 +152,7 @@ Rectangle {
     }
 
     NavBar_Custom{
+        id: navbar
         //navText: currentPlayer + " your Turn"
         navText: "your Tunr"
         onBackButtonClicked: {
@@ -178,6 +182,15 @@ Rectangle {
 
     function startAnimation(){
         swipeLabelTimer.start() //Start Timer for swipeLabel popup
+    }
+    function resetAll(){
+        swipeLabel.visible = false
+        rCrec.width = 0
+        lCrec.width = 0
+        dareTitelLabel.visible = true
+        truthTitelLabel.visible = true
+        navbar.visible = true
+        selectedType = ""
     }
 }
 

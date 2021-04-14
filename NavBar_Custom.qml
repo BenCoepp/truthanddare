@@ -8,7 +8,7 @@ Item {
 
     property var navText: ""
     property var titelColor: "white"
-    property var icon: "qrc:/Assetes/Icons/Expand Arrow icon.png"
+    property var icon: "qrc:/Assetes/Icons/arrow_icon.png"
 
     signal backButtonClicked()
 
@@ -22,6 +22,7 @@ Item {
             anchors.centerIn: parent
             width: 30
             height: 30
+            rotation: -180
             antialiasing: true
             source: icon
         }
@@ -31,7 +32,7 @@ Item {
         anchors.centerIn: parent
         text: navText
         font.bold: true
-        font.pointSize: 10
+        font.pointSize: 12
         color: titelColor
     }
 }
