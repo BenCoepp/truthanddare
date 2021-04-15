@@ -397,8 +397,25 @@ Item {
                 }
 
                 CheckBox{
-                    width: newGameSwipeView.width-20
+                    width: parent.width-20
+                    anchors.horizontalCenter: parent.horizontalCenter
                     text: "Sex"
+                    onCheckedChanged: {
+                        function find(model, criteria) {
+                          for(var i = 0; i < model.count; ++i) if (criteria(model.get(i))) return model.get(i)
+                          return null
+                        }
+                        if(this.checked === true){
+                            gameOptions.append({"value": this.text.toLowerCase(),"titel": this.text})
+                        }else{
+                            gameOptions.remove(find(gameOptions, function(item) { return item.name === value }))
+                        }
+                    }
+                }
+                CheckBox{
+                    width: parent.width-20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "Ice Cube"
                     onCheckedChanged: {
                         function find(model, criteria) {
                           for(var i = 0; i < model.count; ++i) if (criteria(model.get(i))) return model.get(i)
