@@ -11,7 +11,7 @@ explicit JSON_HANDLER(QObject *parent = 0);
 
 Q_INVOKABLE void writeJson(QString txt, QString out);
 Q_INVOKABLE QString readJson(QString fileName);
-Q_INVOKABLE void writeListModel(QString fileName, QString out);
+
 signals:
 
 public slots:

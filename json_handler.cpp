@@ -21,15 +21,13 @@ void JSON_HANDLER::writeJson(QString file, QString out)
     // Create and open a text file
       ofstream MyFile(file.toStdString() + ".json");
       if(MyFile.is_open()){
-          //qDebug() << "File Opend Correctly";
+          qDebug() << "File Opend Correctly";
       }else{
-          //qDebug() << "File Opend not Correctly";
+          qDebug() << "File Opend not Correctly";
       }
 
       // Write to the file
       MyFile << out.toStdString();
-        //qDebug() << "Finished";
-      // Close the files
       MyFile.close();
 }
 QString JSON_HANDLER::readJson(QString fileName){
@@ -42,9 +40,3 @@ QString JSON_HANDLER::readJson(QString fileName){
     return val;
 }
 
-void JSON_HANDLER::writeListModel(QString fileName, QString out)
-{
-    ofstream MyFile(fileName.toStdString() + ".json");
-    MyFile << out.toStdString();
-    MyFile.close();
-}

@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "qrc:/Components"
+import Firebase 1.0
 Rectangle{
     color: "#282442"
 
@@ -9,6 +10,9 @@ Rectangle{
         onBackButtonClicked: {
             contentFrame.replace("qrc:/Game/Open_Page.qml")
         }
+    }
+    Firebase{
+        id: firebase
     }
 
     ObjectModel{
@@ -26,18 +30,30 @@ Rectangle{
                 color: "white"
             }
         }
-
-        Settings_Item{
-            anchors.horizontalCenter: parent.horizontalCenter
-            titel: "Your Name"
-            value: "John Doe"
-            optionType: "string"
+        Item{
+            id: accountSettingsItem
+            visible: false
+            Settings_Item{
+                anchors.horizontalCenter: parent.horizontalCenter
+                titel: "Your Name"
+                value: "John Doe"
+                optionType: "string"
+            }
+            Settings_Item{
+                anchors.horizontalCenter: parent.horizontalCenter
+                titel: "Age"
+                value: 20
+                optionType: "int"
+            }
         }
-        Settings_Item{
+
+        Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            titel: "Age"
-            value: 20
-            optionType: "int"
+            text: "LogIn or SignUp"
+            onClicked: {
+                firebase.dbsetAPIKey("AIzaSyB1s5mVGCw7sLcv3TkkzHJP20viEL390FY")
+                firebase.dbsignUserIn("ben.coeppicus@gmail.com", "elfenlied6")
+            }
         }
 
         Item {

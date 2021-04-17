@@ -14,6 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        firebase_db.cpp \
         json_handler.cpp \
         main.cpp
 
@@ -48,5 +49,6 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
 }
 
 HEADERS += \
+    firebase_db.h \
     json_handler.h
 
