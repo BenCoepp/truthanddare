@@ -18,6 +18,7 @@
         <file>NavBar_Custom.qml</file>
         <file>QRCode.qml</file>
         <file>qqr.js</file>
+        <file>LogIn_SignUp_PopUp.qml</file>
     </qresource>
     <qresource prefix="/Add_TAD">
         <file>AddTAD_Page.qml</file>

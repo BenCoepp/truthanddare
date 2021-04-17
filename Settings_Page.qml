@@ -51,8 +51,7 @@ Rectangle{
             anchors.horizontalCenter: parent.horizontalCenter
             text: "LogIn or SignUp"
             onClicked: {
-                firebase.dbsetAPIKey("AIzaSyB1s5mVGCw7sLcv3TkkzHJP20viEL390FY")
-                firebase.dbsignUserIn("ben.coeppicus@gmail.com", "elfenlied6")
+                logIn_SignUp_PopUp.open()
             }
         }
 
@@ -117,5 +116,8 @@ Rectangle{
                 text: "Save"
             }
         }
+    }
+    LogIn_SignUp_PopUp{
+        id: logIn_SignUp_PopUp
     }
 }
