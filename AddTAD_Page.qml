@@ -113,7 +113,6 @@ Rectangle {
     }
     NavBar_Custom{
         id: navbar
-        //navText: currentPlayer + " your Turn"
         navText: "Join or Create Room"
         onBackButtonClicked: {
             contentFrame.replace("qrc:/Game/Open_Page.qml")
