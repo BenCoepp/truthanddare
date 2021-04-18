@@ -78,6 +78,9 @@ Rectangle {
             from: 0
             to: parent.height-50
             duration: 500
+            onFinished: {
+                contentFrame.replace("qrc:/Room_Page/CreateRoom_Page.qml")
+            }
         }
     }
 
@@ -91,7 +94,8 @@ Rectangle {
         }
         Label{
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 100
             text: "Join Room"
         }
     }
@@ -105,7 +109,8 @@ Rectangle {
         }
         Label{
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 100
             text: "Create Room"
         }
     }
