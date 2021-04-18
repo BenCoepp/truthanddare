@@ -39,7 +39,9 @@ void Firebase::post(const QString &url, QJsonDocument &payload){
     connect(m_networkReply, &QNetworkReply::readyRead, this, &Firebase::networkReplayReadyRead);
 }
 QString Firebase::get(const QString &url){
-    return url;
+    QNetworkRequest newRequest((QUrl(firebase_realtimeDatabase_URL + url)));
+    m_networkReply = m_networkAccessManager->get(newRequest);
+    return m_networkReply->readAll();
 }
 void Firebase::put(const QString &url, QJsonDocument &payload)
 {
